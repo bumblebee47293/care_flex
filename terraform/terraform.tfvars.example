@@ -1,0 +1,19 @@
+# Example terraform.tfvars file
+# Copy this to terraform.tfvars and fill in your values
+# DO NOT commit terraform.tfvars to version control!
+
+app_name       = "careflex"
+fly_org        = "your-org-slug"
+primary_region = "iad"
+
+# Generate these secrets:
+# secret_key_base: mix phx.gen.secret
+# cloak_key: openssl rand -base64 32
+# guardian_secret: mix phx.gen.secret
+
+secret_key_base = "your-secret-key-base-here"
+cloak_key       = "your-cloak-key-here"
+guardian_secret = "your-guardian-secret-here"
+
+# Optional: custom domain
+# custom_domain = "careflex.example.com"
