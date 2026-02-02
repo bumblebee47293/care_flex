@@ -54,6 +54,10 @@ defmodule CareflexCore.MixProject do
       {:timex, "~> 3.7"},
       {:bcrypt_elixir, "~> 3.0"},
 
+      # Authentication
+      {:guardian, "~> 2.3"},
+      {:comeonin, "~> 5.4"},
+
       # Testing
       {:ex_machina, "~> 2.7", only: :test},
       {:faker, "~> 0.18", only: :test},
