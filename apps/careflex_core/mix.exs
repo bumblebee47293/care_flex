@@ -59,6 +59,7 @@ defmodule CareflexCore.MixProject do
       {:faker, "~> 0.18", only: :test},
       {:excoveralls, "~> 0.18", only: :test},
       {:mox, "~> 1.1", only: :test},
+      {:stream_data, "~> 0.6", only: :test},
 
       # Code Quality
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
