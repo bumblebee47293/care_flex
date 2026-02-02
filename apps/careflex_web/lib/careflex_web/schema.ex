@@ -16,12 +16,14 @@ defmodule CareflexWeb.Schema do
   import_types CareflexWeb.Schema.BenefitTypes
   import_types CareflexWeb.Schema.NotificationTypes
   import_types CareflexWeb.Schema.AgentTypes
+  import_types CareflexWeb.Schema.AuthTypes
 
   query do
     import_fields :patient_queries
     import_fields :appointment_queries
     import_fields :benefit_queries
     import_fields :agent_queries
+    import_fields :auth_queries
   end
 
   mutation do
@@ -29,10 +31,12 @@ defmodule CareflexWeb.Schema do
     import_fields :appointment_mutations
     import_fields :benefit_mutations
     import_fields :agent_mutations
+    import_fields :auth_mutations
   end
 
   subscription do
     import_fields :appointment_subscriptions
+    import_fields :agent_subscriptions
   end
 
   def context(ctx) do
