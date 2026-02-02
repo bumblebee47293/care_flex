@@ -12,6 +12,7 @@ defmodule CareflexCore.Factory do
   alias CareflexCore.Benefits.Benefit
   alias CareflexCore.Audit.AuditLog
   alias CareflexCore.Notifications.Notification
+  alias CareflexCore.Auth.User
 
   def patient_factory do
     %Patient{
@@ -145,6 +146,48 @@ defmodule CareflexCore.Factory do
       sent_at: DateTime.add(now, -60, :second),
       delivered_at: now,
       external_provider_id: "MSG-123"
+    )
+  end
+
+  def user_factory do
+    %User{
+      email: sequence(:user_email, &"user#{&1}@example.com"),
+      password: "SecurePassword123!",
+      first_name: "Test",
+      last_name: "User",
+      phone: "+1-555-0199",
+      role: :patient,
+      status: :active,
+      failed_login_attempts: 0
+    }
+  end
+
+  # Role-specific user factories
+  def patient_user_factory do
+    build(:user, role: :patient)
+  end
+
+  def agent_user_factory do
+    build(:user,
+      role: :agent,
+      first_name: "Agent",
+      last_name: "Smith"
+    )
+  end
+
+  def admin_user_factory do
+    build(:user,
+      role: :admin,
+      first_name: "Admin",
+      last_name: "User"
+    )
+  end
+
+  def locked_user_factory do
+    build(:user,
+      status: :locked,
+      failed_login_attempts: 5,
+      locked_at: DateTime.utc_now()
     )
   end
 end
