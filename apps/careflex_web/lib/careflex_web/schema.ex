@@ -15,17 +15,20 @@ defmodule CareflexWeb.Schema do
   import_types CareflexWeb.Schema.AppointmentTypes
   import_types CareflexWeb.Schema.BenefitTypes
   import_types CareflexWeb.Schema.NotificationTypes
+  import_types CareflexWeb.Schema.AgentTypes
 
   query do
     import_fields :patient_queries
     import_fields :appointment_queries
     import_fields :benefit_queries
+    import_fields :agent_queries
   end
 
   mutation do
     import_fields :patient_mutations
     import_fields :appointment_mutations
     import_fields :benefit_mutations
+    import_fields :agent_mutations
   end
 
   subscription do

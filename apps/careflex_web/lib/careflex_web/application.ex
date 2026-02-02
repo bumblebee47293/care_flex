@@ -10,6 +10,8 @@ defmodule CareflexWeb.Application do
     children = [
       # Start the Telemetry supervisor
       CareflexWeb.Telemetry,
+      # Start Presence for agent tracking
+      CareflexWeb.Presence,
       # Start the Endpoint (http/https)
       CareflexWeb.Endpoint
     ]
