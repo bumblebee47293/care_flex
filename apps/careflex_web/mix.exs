@@ -1,0 +1,74 @@
+defmodule CareflexWeb.MixProject do
+  use Mix.Project
+
+  def project do
+    [
+      app: :careflex_web,
+      version: "0.1.0",
+      build_path: "../../_build",
+      config_path: "../../config/config.exs",
+      deps_path: "../../deps",
+      lockfile: "../../mix.lock",
+      elixir: "~> 1.15",
+      elixirc_paths: elixirc_paths(Mix.env()),
+      start_permanent: Mix.env() == :prod,
+      aliases: aliases(),
+      deps: deps()
+    ]
+  end
+
+  def application do
+    [
+      mod: {CareflexWeb.Application, []},
+      extra_applications: [:logger, :runtime_tools]
+    ]
+  end
+
+  defp elixirc_paths(:test), do: ["lib", "test/support"]
+  defp elixirc_paths(_), do: ["lib"]
+
+  defp deps do
+    [
+      # Phoenix
+      {:phoenix, "~> 1.7.11"},
+      {:phoenix_ecto, "~> 4.5"},
+      {:phoenix_html, "~> 4.0"},
+      {:phoenix_live_reload, "~> 1.4", only: :dev},
+      {:phoenix_live_view, "~> 0.20.2"},
+      {:phoenix_live_dashboard, "~> 0.8.3"},
+
+      # GraphQL
+      {:absinthe, "~> 1.7"},
+      {:absinthe_phoenix, "~> 2.0"},
+      {:absinthe_plug, "~> 1.5"},
+
+      # Authentication
+      {:guardian, "~> 2.3"},
+
+      # Telemetry
+      {:telemetry_metrics, "~> 0.6"},
+      {:telemetry_poller, "~> 1.0"},
+
+      # JSON
+      {:jason, "~> 1.4"},
+
+      # CORS
+      {:cors_plug, "~> 3.0"},
+
+      # Core app
+      {:careflex_core, in_umbrella: true},
+
+      # Dev tools
+      {:phoenix_live_reload, "~> 1.4", only: :dev},
+      {:esbuild, "~> 0.8", runtime: Mix.env() == :dev},
+      {:tailwind, "~> 0.2", runtime: Mix.env() == :dev}
+    ]
+  end
+
+  defp aliases do
+    [
+      setup: ["deps.get"],
+      test: ["test"]
+    ]
+  end
+end
