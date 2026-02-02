@@ -56,7 +56,7 @@ config :careflex_web, CareflexWeb.Endpoint,
   live_view: [signing_salt: "your-signing-salt-here"]
 
 # Configure Guardian for JWT
-config :careflex_web, CareflexWeb.Guardian,
+config :careflex_core, CareflexCore.Guardian,
   issuer: "careflex",
   secret_key: "your-guardian-secret-key-here"
 
